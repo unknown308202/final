@@ -1,0 +1,90 @@
+<?php
+// Step 1: Database connection details
+$host = 'localhost';  // Change if using a remote host
+$user = 'root';        // Your MySQL username
+$password = '';        // Your MySQL password
+$dbname = 'shop';      // Database name
+
+// Step 2: Create a connection
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Step 3: Check if the connection is successful
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+// Step 4: Write an SQL query to fetch all products
+$sql = "SELECT * FROM Products";
+$result = $conn->query($sql);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    <style>
+         body{
+        background-color: peachpuff;
+        padding: 30px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    table{
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    th,td{
+        border: 1px solid brown;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th{
+        background-color: darksalmon;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+
+<h1>Products List</h1>
+
+<?php
+// Step 5: Display products if available
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>";
+    
+    // Step 6: Loop through each product and display it
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['description'] . "</td>";
+        echo "<td>" . $row['price']. "</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+} 
+else
+{
+    echo "<p>No products found.</p>";
+}
+
+// Step 7: Close the database connection
+$conn->close();
+?>
+
+</body>
+</html>
