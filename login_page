@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" action="login.php" method="POST">
+      
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  font-size: large;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.5rem;
+  background: #007BFF;
+  color: white;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Simple login validation
+    if ($username === 'user' && $password === '1234') {
+        echo "<script>alert('Login successful!'); window.location.href = 'welcome.html';</script>";
+    } else {
+        echo "<script>alert('Invalid username or password.'); window.history.back();</script>";
+    }
+}
+?>
+
+
+
+
+
+
+
+
+// Optional: You can use JavaScript for additional client-side validation.
+document.getElementById('loginForm').addEventListener('submit', function(event) 
+{
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (!username || !password)
+    {
+      event.preventDefault();
+      alert('Please fill in all fields.');
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+welcome.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELCOME</title>
+</head>
+<body>
+    <h2>HELLO USER, YOU HAVE SUCCESSFULLY LOGGED IN..!!</h2>
+</body>
+</html>
