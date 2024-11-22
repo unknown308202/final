@@ -1,0 +1,154 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Biography</title>
+    <link rel="stylesheet" href="website.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Biography</h1>
+    </header>
+
+    <section class="bio">
+        <h2>About Me</h2>
+        <p>Hi, I'm Bhumika Rawate, currently pursuing BTech in AI&DS at AISSMS IOIT College, Pune. I am passionate about modern technologies - AI, ML, Cloud computing, etc. I love working on these topics and am always eager to learn more!</p>
+        <button id="showMoreBtn">Show More</button>
+        <p id="moreInfo" style="display: none;">I also enjoy contributing to open-source projects and exploring various data science challenges to improve my problem-solving skills.</p>
+    </section>
+
+    <section class="interests">
+        <h2>My Interests</h2>
+        <ul>
+            <li>Technology</li>
+            <li>Traveling</li>
+            <li>Photography</li>
+            <li>Reading Books</li>
+        </ul>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:bhumikarawate@example.com">bhumikarawate@example.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Bhumika Rawate. All rights reserved.</p>
+    </footer>
+
+    <script src="website.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+.bio, .interests, .contact {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+js
+// Toggle the visibility of additional information on button click
+document.getElementById('showMoreBtn').addEventListener('click', function() {
+    const moreInfo = document.getElementById('moreInfo');
+    if (moreInfo.style.display === 'none') {
+        moreInfo.style.display = 'block';
+    } else {
+        moreInfo.style.display = 'none';
+    }
+});
+
+// Smooth scrolling when clicking links
+document.querySelectorAll('a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
